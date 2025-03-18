@@ -99,7 +99,7 @@
        grid_size_x="1*mm" 
        grid_size_y="1*mm"/>-->
       <!-- NO SPACES BETWEEN ID DESCRIPTORS!!! -->
-      <id>calolayer:10,abslayer:1,cellid:20cell:10</id>
+      <id>calolayer:5,abslayer:1,cellid:10</id>
     </readout>
   </readouts> 
 
