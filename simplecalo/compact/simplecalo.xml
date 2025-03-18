@@ -90,7 +90,7 @@
       <caloLayer material="Air" x="CaloLayerX" y="CaloLayerY" z="CaloLayerZ" vis="CaloLayerVis"/>
       <absLayer material="Brass" x="AbsLayerX" y="AbsLayerY" z="AbsLayerZ" vis="AbsLayerVis"/>
       <sensLayer material="Air" x="SensLayerX" y="SensLayerY" z="SensLayerZ" vis="SensLayerVis"/>
-      <cell material="Silicon" x="CellX" y="CellY" z="CellZ" sensitive="false" vis="CellVis"/>
+      <cell material="Silicon" x="CellX" y="CellY" z="CellZ" sensitive="true" vis="CellVis"/>
     </detector>
   </detectors>
   <readouts>
