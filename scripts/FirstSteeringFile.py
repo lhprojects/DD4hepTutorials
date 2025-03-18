@@ -2,7 +2,6 @@ from DDSim.DD4hepSimulation import DD4hepSimulation
 from g4units import mm, m, cm, GeV, MeV
 SIM = DD4hepSimulation()
 
-SIM.part.userParticleHandler=''
 
 ## The compact XML file, or multiple compact files, if the last one is the closer.
 SIM.compactFile = ["simplecalo/compact/simplecalo.xml"]
@@ -100,7 +99,7 @@ SIM.vertexSigma = [0.0, 0.0, 0.0, 0.0]
 ################################################################################
 
 ##  set the default calorimeter action 
-SIM.action.calo = "Geant4CalorimeterAction"
+SIM.action.calo = "SimpleCaloSDAction"
 
 ## List of patterns matching sensitive detectors of type Calorimeter.
 SIM.action.calorimeterSDTypes = ['calorimeter']
@@ -270,7 +269,7 @@ SIM.gun.distribution = None
 ## Total energy (including mass) for the particle gun.
 ## 
 ## If not None, it will overwrite the setting of momentumMin and momentumMax
-SIM.gun.energy = 100.0*GeV
+SIM.gun.energy = 1000.0*GeV
 
 ## Maximal pseudorapidity for random distibution (overrides thetaMin)
 SIM.gun.etaMax = None
@@ -291,7 +290,7 @@ SIM.gun.isotrop = False
 ## Minimal momentum when using distribution (default = 0.0)
 ##SIM.gun.momentumMin = 0.0
 SIM.gun.multiplicity = 1
-SIM.gun.particle = "e-"
+SIM.gun.particle = "pi-"
 
 ## Maximal azimuthal angle for random distribution
 SIM.gun.phiMax = None
@@ -480,7 +479,7 @@ SIM.part.printStartTracking = False
 SIM.part.saveProcesses = ['Decay']
 
 ## Optionally enable an extended Particle Handler
-SIM.part.userParticleHandler = "Geant4TCUserParticleHandler"
+SIM.part.userParticleHandler = ""
 
 
 ################################################################################
