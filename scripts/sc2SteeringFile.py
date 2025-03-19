@@ -4,7 +4,7 @@ SIM = DD4hepSimulation()
 
 
 ## The compact XML file, or multiple compact files, if the last one is the closer.
-SIM.compactFile = ["simplecalo/compact/simplecalo.xml"]
+SIM.compactFile = ["simplecalo/compact/simplecalo2.xml"]
 ## Lorentz boost for the crossing angle, in radian!
 SIM.crossingAngleBoost = 0.0
 SIM.enableDetailedShowerMode = False

@@ -1,5 +1,5 @@
 //**************************************************************************
-// \file simplecalo.cpp
+// \file simplecalo2.cpp
 // \brief:  Implementation of simple sandwich calorimeter DD4hep geometry
 // \author: Lorenzo Pezzotti
 // \date:   March 2025
@@ -15,7 +15,7 @@ using namespace dd4hep;
 //
 static Ref_t create_detector(Detector &description, xml_h e,
                              SensitiveDetector sens) {
-  std::cout << "--> simplecalo::create_detector() start" << std::endl;
+  std::cout << "--> simplecalo2::create_detector() start" << std::endl;
 
   // Get info from the xml file
   //
@@ -135,10 +135,10 @@ static Ref_t create_detector(Detector &description, xml_h e,
   PlacedVolume CaloPlaced = motherVolume.placeVolume(CaloVol);
   subdet.setPlacement(CaloPlaced);
 
-  std::cout << "--> simplecalo::create_detector() end" << std::endl;
+  std::cout << "--> simplecalo2::create_detector() end" << std::endl;
   return subdet;
 }
 
-DECLARE_DETELEMENT(simplecalo, create_detector)
+DECLARE_DETELEMENT(simplecalo2, create_detector)
 
 //**************************************************************************

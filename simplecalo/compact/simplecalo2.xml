@@ -10,7 +10,7 @@
      #
      #==========================================================================
 -->
-  <info name="simplecalo"
+  <info name="simplecalo2"
     title="A simple sandwich calorimeter simulation"
     author="Lorenzo Pezzotti"
     url="None"
@@ -83,7 +83,7 @@
        If a detector contains sub-detectors, their information must be included as below.
   -->
   <detectors>
-    <detector name="simplecalo" type="simplecalo" vis="CaloVis" id ="0" readout="simplecaloRO">
+    <detector name="simplecalo2" type="simplecalo2" vis="CaloVis" id ="0" readout="simplecalo2RO">
     <type_flags type=" DetType_CALORIMETER + DetType_ELECTROMAGNETIC + DetType_BARREL"/>
     <dimensions x="CaloX" y="CaloY" z="CaloZ"/>
       <calo material="Air" vis="CaloVis"/>
@@ -94,7 +94,7 @@
     </detector>
   </detectors>
   <readouts>
-    <readout name="simplecaloRO">
+    <readout name="simplecalo2RO">
       <segmentation type="CartesianGridXY" 
        grid_size_x="1*mm" 
        grid_size_y="1*mm"/>-->
