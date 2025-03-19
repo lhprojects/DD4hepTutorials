@@ -20,25 +20,26 @@
   </info>
 
   <define>
-    <constant name="world_side"  value="20*m"/>
-    <constant name="world_x"     value="world_side/2"/>
-    <constant name="world_y"     value="world_side/2"/>
-    <constant name="world_z"     value="world_side/2"/>
-    <constant name="CaloX"       value="1*m"/>
-    <constant name="CaloY"       value="CaloX"/>
-    <constant name="CaloZ"       value="2*m"/>
-    <constant name="CaloLayerX"  value="CaloX"/>
-    <constant name="CaloLayerY"  value="CaloY"/>
-    <constant name="CaloLayerZ"  value="20*cm"/>
-    <constant name="AbsLayerX"   value="CaloX"/>
-    <constant name="AbsLayerY"   value="CaloY"/>
-    <constant name="AbsLayerZ"   value="19*cm"/>
-    <constant name="SensLayerX"  value="CaloX"/>
-    <constant name="SensLayerY"  value="CaloY"/>
-    <constant name="SensLayerZ"  value="1.0*cm"/>
-    <constant name="CellX"       value="10.0*cm"/>
-    <constant name="CellY"       value="CellX"/>
-    <constant name="CellZ"       value="SensLayerZ"/>
+    <constant name="world_side"   value="20*m"/>
+    <constant name="world_x"      value="world_side/2"/>
+    <constant name="world_y"      value="world_side/2"/>
+    <constant name="world_z"      value="world_side/2"/>
+    <constant name="CaloX"        value="1*m"/>
+    <constant name="CaloY"        value="CaloX"/>
+    <constant name="CaloZ"        value="2*m"/>
+    <constant name="CaloLayerX"   value="CaloX"/>
+    <constant name="CaloLayerY"   value="CaloY"/>
+    <constant name="CaloLayerZ"   value="20*cm"/>
+    <constant name="AbsLayerX"    value="CaloX"/>
+    <constant name="AbsLayerY"    value="CaloY"/>
+    <constant name="AbsLayerZ"    value="19*cm"/>
+    <constant name="SensLayerX"   value="CaloX"/>
+    <constant name="SensLayerY"   value="CaloY"/>
+    <constant name="SensLayerZ"   value="1.0*cm"/>
+    <constant name="CellX"        value="10.0*cm"/>
+    <constant name="CellY"        value="CellX"/>
+    <constant name="CellZ"        value="SensLayerZ"/>
+    <constant name="LayersNumber" value="2"/>    
   </define>
 
   <includes>

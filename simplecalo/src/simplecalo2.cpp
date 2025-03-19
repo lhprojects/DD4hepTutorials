@@ -33,6 +33,10 @@ static Ref_t create_detector(Detector &description, xml_h e,
             << " m, y " << CaloY / m << " m, z " << CaloZ / m << " m"
             << std::endl;
 
+  // Retrieve number of layers to populate the calorimeter container with
+  //
+  auto NumberOfLayers = description.constant<int>("LayersNumber");
+
   // Info for subdetectors
   //
   xml_det_t x_calo = x_det.child(_Unicode(calo));
@@ -80,7 +84,7 @@ static Ref_t create_detector(Detector &description, xml_h e,
 
   // Place twenty calorimeter layers inside the container
   //
-  for (std::size_t i = 0; i < 10; i++) {
+  for (std::size_t i = 0; i < static_cast<std::size_t>(NumberOfLayers); i++) {
     PlacedVolume CaloLayerPlaced = CaloVol.placeVolume(
         CaloLayerVol, i,
         Position(0., 0., -CaloZ / 2. + CaloLayerZ / 2. + i * CaloLayerZ));
