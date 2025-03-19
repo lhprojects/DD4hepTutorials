@@ -1,5 +1,5 @@
 //**************************************************************************
-// \file simplecalo.cpp
+// \file simplecalo2.cpp
 // \brief:  Implementation of simple sandwich calorimeter DD4hep geometry
 // \author: Lorenzo Pezzotti
 // \date:   March 2025
@@ -15,7 +15,7 @@ using namespace dd4hep;
 //
 static Ref_t create_detector(Detector &description, xml_h e,
                              SensitiveDetector sens) {
-  std::cout << "--> simplecalo::create_detector() start" << std::endl;
+  std::cout << "--> simplecalo2::create_detector() start" << std::endl;
 
   // Get info from the xml file
   //
@@ -32,6 +32,10 @@ static Ref_t create_detector(Detector &description, xml_h e,
   std::cout << "--> calo dimensions from XML description: x " << CaloX / m
             << " m, y " << CaloY / m << " m, z " << CaloZ / m << " m"
             << std::endl;
+
+  // Retrieve number of layers to populate the calorimeter container with
+  //
+  auto NumberOfLayers = description.constant<int>("LayersNumber");
 
   // Info for subdetectors
   //
@@ -80,11 +84,11 @@ static Ref_t create_detector(Detector &description, xml_h e,
 
   // Place twenty calorimeter layers inside the container
   //
-  for (std::size_t i = 0; i < 10; i++) {
+  for (std::size_t i = 0; i < static_cast<std::size_t>(NumberOfLayers); i++) {
     PlacedVolume CaloLayerPlaced = CaloVol.placeVolume(
         CaloLayerVol, i,
         Position(0., 0., -CaloZ / 2. + CaloLayerZ / 2. + i * CaloLayerZ));
-    CaloLayerPlaced.addPhysVolID("calolayer",i);
+    CaloLayerPlaced.addPhysVolID("calolayer", i);
   }
 
   // Place an absorber layer inside the calorimeter layer
@@ -94,9 +98,9 @@ static Ref_t create_detector(Detector &description, xml_h e,
       "AbsLayerVol", AbsLayer,
       description.material(x_abslayer.attr<std::string>(_U(material))));
   AbsLayerVol.setVisAttributes(description, x_abslayer.visStr());
-  PlacedVolume AbsLayerPlaced = CaloLayerVol.placeVolume(AbsLayerVol, 1,
-                           Position(0., 0., -CaloLayerZ / 2. + AbsLayerZ / 2.));
-  AbsLayerPlaced.addPhysVolID("abslayer",1);
+  PlacedVolume AbsLayerPlaced = CaloLayerVol.placeVolume(
+      AbsLayerVol, 1, Position(0., 0., -CaloLayerZ / 2. + AbsLayerZ / 2.));
+  AbsLayerPlaced.addPhysVolID("abslayer", 1);
 
   // Place an active layer inside the calorimeter layer
   //
@@ -105,9 +109,9 @@ static Ref_t create_detector(Detector &description, xml_h e,
       "SensLayerVol", SensLayer,
       description.material(x_senslayer.attr<std::string>(_U(material))));
   SensLayerVol.setVisAttributes(description, x_senslayer.visStr());
-  PlacedVolume SensLayerPlaced = CaloLayerVol.placeVolume(SensLayerVol, 1,
-                           Position(0., 0., CaloLayerZ / 2. - SensLayerZ / 2.));
-  SensLayerPlaced.addPhysVolID("abslayer",0);
+  PlacedVolume SensLayerPlaced = CaloLayerVol.placeVolume(
+      SensLayerVol, 1, Position(0., 0., CaloLayerZ / 2. - SensLayerZ / 2.));
+  SensLayerPlaced.addPhysVolID("abslayer", 0);
 
   // Place many active cells (pixels) inside the calorimeter layer
   //
@@ -116,14 +120,16 @@ static Ref_t create_detector(Detector &description, xml_h e,
                  description.material(x_cell.attr<std::string>(_U(material))));
   CellVol.setVisAttributes(description, x_cell.visStr());
   // Make the cell sensitive
-  if (iscellsens) CellVol.setSensitiveDetector(sens);
+  if (iscellsens)
+    CellVol.setSensitiveDetector(sens);
   double x, y = 0;
   for (std::size_t i = 0; i < 10; i++) {
     y = SensLayerY / 2. - CellY / 2. - i * CellY;
     for (std::size_t j = 0; j < 10; j++) {
       x = -SensLayerX / 2. + CellX / 2. + j * CellX;
-      PlacedVolume CellVolPlaced = SensLayerVol.placeVolume(CellVol, 10 * i + j, Position(x, y, 0.));
-      CellVolPlaced.addPhysVolID("cellid",10*i+j);
+      PlacedVolume CellVolPlaced =
+          SensLayerVol.placeVolume(CellVol, 10 * i + j, Position(x, y, 0.));
+      CellVolPlaced.addPhysVolID("cellid", 10 * i + j);
     }
   }
 
@@ -135,10 +141,10 @@ static Ref_t create_detector(Detector &description, xml_h e,
   PlacedVolume CaloPlaced = motherVolume.placeVolume(CaloVol);
   subdet.setPlacement(CaloPlaced);
 
-  std::cout << "--> simplecalo::create_detector() end" << std::endl;
+  std::cout << "--> simplecalo2::create_detector() end" << std::endl;
   return subdet;
 }
 
-DECLARE_DETELEMENT(simplecalo, create_detector)
+DECLARE_DETELEMENT(simplecalo2, create_detector)
 
 //**************************************************************************

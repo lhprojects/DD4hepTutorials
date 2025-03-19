@@ -10,7 +10,7 @@
      #
      #==========================================================================
 -->
-  <info name="simplecalo"
+  <info name="simplecalo2"
     title="A simple sandwich calorimeter simulation"
     author="Lorenzo Pezzotti"
     url="None"
@@ -20,25 +20,26 @@
   </info>
 
   <define>
-    <constant name="world_side"  value="20*m"/>
-    <constant name="world_x"     value="world_side/2"/>
-    <constant name="world_y"     value="world_side/2"/>
-    <constant name="world_z"     value="world_side/2"/>
-    <constant name="CaloX"       value="1*m"/>
-    <constant name="CaloY"       value="CaloX"/>
-    <constant name="CaloZ"       value="2*m"/>
-    <constant name="CaloLayerX"  value="CaloX"/>
-    <constant name="CaloLayerY"  value="CaloY"/>
-    <constant name="CaloLayerZ"  value="20*cm"/>
-    <constant name="AbsLayerX"   value="CaloX"/>
-    <constant name="AbsLayerY"   value="CaloY"/>
-    <constant name="AbsLayerZ"   value="19*cm"/>
-    <constant name="SensLayerX"  value="CaloX"/>
-    <constant name="SensLayerY"  value="CaloY"/>
-    <constant name="SensLayerZ"  value="1.0*cm"/>
-    <constant name="CellX"       value="10.0*cm"/>
-    <constant name="CellY"       value="CellX"/>
-    <constant name="CellZ"       value="SensLayerZ"/>
+    <constant name="world_side"   value="20*m"/>
+    <constant name="world_x"      value="world_side/2"/>
+    <constant name="world_y"      value="world_side/2"/>
+    <constant name="world_z"      value="world_side/2"/>
+    <constant name="CaloX"        value="1*m"/>
+    <constant name="CaloY"        value="CaloX"/>
+    <constant name="CaloZ"        value="2*m"/>
+    <constant name="CaloLayerX"   value="CaloX"/>
+    <constant name="CaloLayerY"   value="CaloY"/>
+    <constant name="CaloLayerZ"   value="20*cm"/>
+    <constant name="AbsLayerX"    value="CaloX"/>
+    <constant name="AbsLayerY"    value="CaloY"/>
+    <constant name="AbsLayerZ"    value="19*cm"/>
+    <constant name="SensLayerX"   value="CaloX"/>
+    <constant name="SensLayerY"   value="CaloY"/>
+    <constant name="SensLayerZ"   value="1.0*cm"/>
+    <constant name="CellX"        value="10.0*cm"/>
+    <constant name="CellY"        value="CellX"/>
+    <constant name="CellZ"        value="SensLayerZ"/>
+    <constant name="LayersNumber" value="2"/>    
   </define>
 
   <includes>
@@ -83,7 +84,7 @@
        If a detector contains sub-detectors, their information must be included as below.
   -->
   <detectors>
-    <detector name="simplecalo" type="simplecalo" vis="CaloVis" id ="0" readout="simplecaloRO">
+    <detector name="simplecalo2" type="simplecalo2" vis="CaloVis" id ="0" readout="simplecalo2RO">
     <type_flags type=" DetType_CALORIMETER + DetType_ELECTROMAGNETIC + DetType_BARREL"/>
     <dimensions x="CaloX" y="CaloY" z="CaloZ"/>
       <calo material="Air" vis="CaloVis"/>
@@ -94,7 +95,7 @@
     </detector>
   </detectors>
   <readouts>
-    <readout name="simplecaloRO">
+    <readout name="simplecalo2RO">
       <segmentation type="CartesianGridXY" 
        grid_size_x="1*mm" 
        grid_size_y="1*mm"/>-->
