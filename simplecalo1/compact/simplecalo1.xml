@@ -10,7 +10,7 @@
      #
      #==========================================================================
 -->
-  <info name="simplecalo2"
+  <info name="simplecalo1"
     title="A simple sandwich calorimeter simulation"
     author="Lorenzo Pezzotti"
     url="None"
@@ -36,10 +36,7 @@
     <constant name="SensLayerX"   value="CaloX"/>
     <constant name="SensLayerY"   value="CaloY"/>
     <constant name="SensLayerZ"   value="1.0*cm"/>
-    <constant name="CellX"        value="10.0*cm"/>
-    <constant name="CellY"        value="CellX"/>
-    <constant name="CellZ"        value="SensLayerZ"/>
-    <constant name="LayersNumber" value="2"/>    
+    <constant name="LayersNumber" value="10"/>    
   </define>
 
   <includes>
@@ -75,7 +72,6 @@
     <vis name="CaloLayerVis" alpha="1.0" r="0.0" g="0.0" b="1.0" showDaughters="true" visible="true"/>
     <vis name="AbsLayerVis" alpha="1.0" r="1.0" g="0.624" b="0.0" showDaughters="true" visible="true"/>
     <vis name="SensLayerVis" alpha="1.0" r="1.0" g="0.0" b="0.0" showDaughters="true" visible="true"/>
-    <vis name="CellVis" alpha="1.0" r="0.95" g="0.92" b="0.92" showDaughters="true" visible="true"/>
   </display>
 
   <!-- Define the detector. A detector has a name, type to be returned in .cpp file with 
@@ -84,21 +80,20 @@
        If a detector contains sub-detectors, their information must be included as below.
   -->
   <detectors>
-    <detector name="simplecalo2" type="simplecalo2" vis="CaloVis" id ="0" readout="simplecalo2RO">
+    <detector name="simplecalo1" type="simplecalo1" vis="CaloVis" id ="0" readout="simplecalo1RO">
     <type_flags type=" DetType_CALORIMETER + DetType_ELECTROMAGNETIC + DetType_BARREL"/>
     <dimensions x="CaloX" y="CaloY" z="CaloZ"/>
       <calo material="Air" vis="CaloVis"/>
       <caloLayer material="Air" x="CaloLayerX" y="CaloLayerY" z="CaloLayerZ" vis="CaloLayerVis"/>
       <absLayer material="Brass" x="AbsLayerX" y="AbsLayerY" z="AbsLayerZ" vis="AbsLayerVis"/>
       <sensLayer material="Air" x="SensLayerX" y="SensLayerY" z="SensLayerZ" vis="SensLayerVis"/>
-      <cell material="Silicon" x="CellX" y="CellY" z="CellZ" sensitive="true" vis="CellVis"/>
     </detector>
   </detectors>
   <readouts>
-    <readout name="simplecalo2RO">
+    <readout name="simplecalo1RO">
       <segmentation type="CartesianGridXY" 
-       grid_size_x="1*mm" 
-       grid_size_y="1*mm"/>-->
+       grid_size_x="10*cm" 
+       grid_size_y="10*cm"/>-->
       <!-- NO SPACES BETWEEN ID DESCRIPTORS!!! -->
       <id>calolayer:5,abslayer:1,cellid:10</id>
     </readout>
