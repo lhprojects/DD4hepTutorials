@@ -42,5 +42,6 @@ dd4hep_configure_output()
 
 set(BOOST_ROOT "$ENV{BOOST_ROOT}")
 
+add_subdirectory(simplecalo1)
 add_subdirectory(simplecalo)
 add_subdirectory(sdaction)
