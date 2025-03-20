@@ -4,7 +4,7 @@ file(GLOB headers
   ${PROJECT_SOURCE_DIR}/include/*.h
 )
 
-dd4hep_add_plugin(simplecalo SOURCES src/*.cpp USES
+dd4hep_add_plugin(simplecalo2 SOURCES src/*.cpp USES
   DD4hep::DDCore
   DD4hep::DDCond
   ROOT::Core
@@ -13,18 +13,18 @@ dd4hep_add_plugin(simplecalo SOURCES src/*.cpp USES
   ROOT::MathCore
 )
 
-target_include_directories(simplecalo PUBLIC
+target_include_directories(simplecalo2 PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
 )
 
-set_target_properties(simplecalo PROPERTIES PUBLIC_HEADER "${headers}")
+set_target_properties(simplecalo2 PROPERTIES PUBLIC_HEADER "${headers}")
 
-install(TARGETS simplecalo
+install(TARGETS simplecalo2
   LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}" COMPONENT shlib
   PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}" COMPONENT dev
 )
 
 install(DIRECTORY compact DESTINATION ${CMAKE_INSTALL_DATADIR})
 
-dd4hep_configure_scripts( simplecalo DEFAULT_SETUP WITH_TESTS )
+dd4hep_configure_scripts( simplecalo2 DEFAULT_SETUP WITH_TESTS )
