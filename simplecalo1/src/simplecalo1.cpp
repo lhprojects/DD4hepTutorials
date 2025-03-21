@@ -83,7 +83,7 @@ static Ref_t create_detector(Detector &description, xml_h e,
     PlacedVolume CaloLayerPlaced = CaloVol.placeVolume(
         CaloLayerVol, i,
         Position(0., 0., -CaloZ / 2. + CaloLayerZ / 2. + i * CaloLayerZ));
-    CaloLayerPlaced.addPhysVolID("calolayer", i+1);
+    CaloLayerPlaced.addPhysVolID("calolayer", i + 1);
   }
 
   // Place an absorber layer inside the calorimeter layer
@@ -104,9 +104,9 @@ static Ref_t create_detector(Detector &description, xml_h e,
       "SensLayerVol", SensLayer,
       description.material(x_senslayer.attr<std::string>(_U(material))));
   // Make the layer sensitive
-  if (islayersens){
-      SensLayerVol.setSensitiveDetector(sens);
-      SensLayerVol.setLimitSet(description, x_det.limitsStr());
+  if (islayersens) {
+    SensLayerVol.setSensitiveDetector(sens);
+    SensLayerVol.setLimitSet(description, x_det.limitsStr());
   }
   SensLayerVol.setVisAttributes(description, x_senslayer.visStr());
   PlacedVolume SensLayerPlaced = CaloLayerVol.placeVolume(
