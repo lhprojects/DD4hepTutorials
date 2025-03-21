@@ -96,9 +96,6 @@
   </detectors>
   <readouts>
     <readout name="simplecalo2RO">
-      <segmentation type="CartesianGridXY" 
-       grid_size_x="1*mm" 
-       grid_size_y="1*mm"/>-->
       <!-- NO SPACES BETWEEN ID DESCRIPTORS!!! -->
       <id>calolayer:5,abslayer:1,cellid:10</id>
     </readout>

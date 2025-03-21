@@ -88,7 +88,7 @@ static Ref_t create_detector(Detector &description, xml_h e,
     PlacedVolume CaloLayerPlaced = CaloVol.placeVolume(
         CaloLayerVol, i,
         Position(0., 0., -CaloZ / 2. + CaloLayerZ / 2. + i * CaloLayerZ));
-    CaloLayerPlaced.addPhysVolID("calolayer", i);
+    CaloLayerPlaced.addPhysVolID("calolayer", i+1);
   }
 
   // Place an absorber layer inside the calorimeter layer

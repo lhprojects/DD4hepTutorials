@@ -4,7 +4,7 @@ SIM = DD4hepSimulation()
 
 
 ## The compact XML file, or multiple compact files, if the last one is the closer.
-SIM.compactFile = ["simplecalo2/compact/simplecalo2.xml"]
+SIM.compactFile = ["simplecalo1/compact/simplecalo1.xml"]
 ## Lorentz boost for the crossing angle, in radian!
 SIM.crossingAngleBoost = 0.0
 SIM.enableDetailedShowerMode = False
@@ -269,7 +269,7 @@ SIM.gun.distribution = None
 ## Total energy (including mass) for the particle gun.
 ## 
 ## If not None, it will overwrite the setting of momentumMin and momentumMax
-SIM.gun.energy = 1000.0*GeV
+SIM.gun.energy = 100.0*GeV
 
 ## Maximal pseudorapidity for random distibution (overrides thetaMin)
 SIM.gun.etaMax = None
