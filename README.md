@@ -8,7 +8,7 @@ This repository contains hands-on exercises to help you learn DD4hep, a powerful
  - **simplecalo2**: Build on simplecalo1 and explore how to set up a custom Geant4 Sensitive Detector.
 
 The tutorials should be run after sourcing the Key4hep environment.
-To do this, you will need access to an Alma9 machine with CVMFS access.
+To do this, you will need access to an Alma9 machine with CVMFS.
 
 The first step is to **build the repository**:
 
