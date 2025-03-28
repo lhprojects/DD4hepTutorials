@@ -29,17 +29,17 @@
     <constant name="CaloZ"        value="2*m"/>
     <constant name="CaloLayerX"   value="CaloX"/>
     <constant name="CaloLayerY"   value="CaloY"/>
-    <constant name="CaloLayerZ"   value="20*cm"/>
+    <constant name="CaloLayerZ"   value="10*cm"/>
     <constant name="AbsLayerX"    value="CaloX"/>
     <constant name="AbsLayerY"    value="CaloY"/>
-    <constant name="AbsLayerZ"    value="19*cm"/>
+    <constant name="AbsLayerZ"    value="9*cm"/>
     <constant name="SensLayerX"   value="CaloX"/>
     <constant name="SensLayerY"   value="CaloY"/>
     <constant name="SensLayerZ"   value="1.0*cm"/>
     <constant name="CellX"        value="10.0*cm"/>
     <constant name="CellY"        value="CellX"/>
     <constant name="CellZ"        value="SensLayerZ"/>
-    <constant name="LayersNumber" value="10"/>    
+    <constant name="LayersNumber" value="20"/>    
   </define>
 
   <includes>
