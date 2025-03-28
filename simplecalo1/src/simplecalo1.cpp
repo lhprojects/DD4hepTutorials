@@ -68,16 +68,25 @@ static Ref_t create_detector(Detector &description, xml_h e,
                  description.material(x_calo.attr<std::string>(_U(material))));
   CaloVol.setVisAttributes(description, x_calo.visStr());
 
-  // Create a container for a calorimeter layer
-  // (absorber + active elements)
+  // Hands-on 1: create the shape and Volume for the CaloLayer
+  //
+
+
+
+
+  // Hands-on 1 solution
+  //
+  // Create the calorimeter layer that will contain both the absorber
+  // and active elements
   //
   Box CaloLayer(CaloLayerX / 2., CaloLayerY / 2., CaloLayerZ / 2.);
   Volume CaloLayerVol(
       "CaloLayerVol", CaloLayer,
       description.material(x_calolayer.attr<std::string>(_U(material))));
   CaloLayerVol.setVisAttributes(description, x_calolayer.visStr());
-
-  // Place twenty calorimeter layers inside the container
+  
+  // Place N calorimeter layers inside the CaloVol.
+  // Hint: use NumberOfLayers defined above.
   //
   for (std::size_t i = 0; i < static_cast<std::size_t>(NumberOfLayers); i++) {
     PlacedVolume CaloLayerPlaced = CaloVol.placeVolume(
