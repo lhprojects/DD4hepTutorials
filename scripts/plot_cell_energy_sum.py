@@ -12,7 +12,7 @@ args = parser.parse_args()
 reader = root_io.Reader(args.input_file)
 
 # Prepare a ROOT TH1 to store the cell energy sum
-cell_energy_sum_th1 = ROOT.TH1F("cell_energy_sum_th1", ";Cell energy sum [GeV]; Number of events", 50, 0, 0.005) # FIXME tune the range after finalizing the calo
+cell_energy_sum_th1 = ROOT.TH1F("cell_energy_sum_th1", ";Cell energy sum [GeV]; Number of events", 100, 0, 4.0) 
 
 # Fill the TH1 with the cell energy sum
 for event in reader.get("events"):
