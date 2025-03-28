@@ -16,7 +16,7 @@ int plot_cell_energy_sum(std::string input_file) {
   auto reader = podio::makeReader(input_file);
 
   // Prepare a ROOT TH1 to store the cell energy sum
-  TH1F* cell_energy_sum_th1 = new TH1F("cell_energy_sum_th1", ";Cell energy sum [GeV]; Number of events", 50, 0, 0.005); // FIXME tune the range after finalizing the calo
+  TH1F* cell_energy_sum_th1 = new TH1F("cell_energy_sum_th1", ";Cell energy sum [GeV]; Number of events", 100, 0, 4.0);
 
   // Fill the TH1 with the cell energy sum
   for (size_t i = 0; i < reader.getEvents(); ++i) {
