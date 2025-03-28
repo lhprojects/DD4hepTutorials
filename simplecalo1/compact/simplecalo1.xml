@@ -80,7 +80,7 @@
        If a detector contains sub-detectors, their information must be included as below.
   -->
   <detectors>
-    <detector name="simplecalo1" type="simplecalo1" vis="CaloVis" id ="0" readout="simplecalo1RO">
+    <detector name="simplecalo1" type="simplecalo1" vis="CaloVis" id ="0" readout="simplecaloRO">
     <type_flags type=" DetType_CALORIMETER + DetType_ELECTROMAGNETIC + DetType_BARREL"/>
     <dimensions x="CaloX" y="CaloY" z="CaloZ"/>
       <calo material="Air" vis="CaloVis"/>
