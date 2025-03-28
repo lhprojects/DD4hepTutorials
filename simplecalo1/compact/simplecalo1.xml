@@ -29,14 +29,14 @@
     <constant name="CaloZ"        value="2*m"/>
     <constant name="CaloLayerX"   value="CaloX"/>
     <constant name="CaloLayerY"   value="CaloY"/>
-    <constant name="CaloLayerZ"   value="20*cm"/>
+    <constant name="CaloLayerZ"   value="10*cm"/>
     <constant name="AbsLayerX"    value="CaloX"/>
     <constant name="AbsLayerY"    value="CaloY"/>
-    <constant name="AbsLayerZ"    value="19*cm"/>
+    <constant name="AbsLayerZ"    value="9*cm"/>
     <constant name="SensLayerX"   value="CaloX"/>
     <constant name="SensLayerY"   value="CaloY"/>
     <constant name="SensLayerZ"   value="1.0*cm"/>
-    <constant name="LayersNumber" value="10"/>    
+    <constant name="LayersNumber" value="20"/>    
   </define>
 
   <includes>
@@ -80,17 +80,17 @@
        If a detector contains sub-detectors, their information must be included as below.
   -->
   <detectors>
-    <detector name="simplecalo1" type="simplecalo1" vis="CaloVis" id ="0" readout="simplecalo1RO">
+    <detector name="simplecalo1" type="simplecalo1" vis="CaloVis" id ="0" readout="simplecaloRO">
     <type_flags type=" DetType_CALORIMETER + DetType_ELECTROMAGNETIC + DetType_BARREL"/>
     <dimensions x="CaloX" y="CaloY" z="CaloZ"/>
       <calo material="Air" vis="CaloVis"/>
       <caloLayer material="Air" x="CaloLayerX" y="CaloLayerY" z="CaloLayerZ" vis="CaloLayerVis"/>
       <absLayer material="Brass" x="AbsLayerX" y="AbsLayerY" z="AbsLayerZ" vis="AbsLayerVis"/>
-      <sensLayer material="Air" x="SensLayerX" y="SensLayerY" z="SensLayerZ" sensitive="true" vis="SensLayerVis"/>
+      <sensLayer material="Silicon" x="SensLayerX" y="SensLayerY" z="SensLayerZ" sensitive="true" vis="SensLayerVis"/>
     </detector>
   </detectors>
   <readouts>
-    <readout name="simplecalo1RO">
+    <readout name="simplecaloRO">
       <segmentation type="CartesianGridXY" 
        grid_size_x="10*cm" 
        grid_size_y="10*cm"/>
