@@ -2,7 +2,7 @@
 // root -b
 // .L plot_cell_energy_sum.C
 // plot_cell_energy_sum(path_to_file)
-// NB: in this case, a simple ROOT command in the interpreter (events->Draw("Sum$(simplecalo1RO.energy)")) would give you the same information but the goal here is to teach how to properly analyze podio files (needed for more advanced analyses)
+// NB: in this case, a simple ROOT command in the interpreter (events->Draw("Sum$(simplecaloRO.energy)")) would give you the same information but the goal here is to teach how to properly analyze podio files (needed for more advanced analyses)
 
 #include <string>
 
@@ -21,7 +21,7 @@ int plot_cell_energy_sum(std::string input_file) {
   // Fill the TH1 with the cell energy sum
   for (size_t i = 0; i < reader.getEvents(); ++i) {
     auto event = reader.readNextEvent();
-    auto& calo_cells = event.get<edm4hep::SimCalorimeterHitCollection>("simplecalo1RO");
+    auto& calo_cells = event.get<edm4hep::SimCalorimeterHitCollection>("simplecaloRO");
     float total_energy = 0.;
     for (const auto& calo_cell : calo_cells) {
       total_energy += calo_cell.getEnergy();

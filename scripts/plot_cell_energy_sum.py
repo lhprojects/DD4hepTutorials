@@ -16,7 +16,7 @@ cell_energy_sum_th1 = ROOT.TH1F("cell_energy_sum_th1", ";Cell energy sum [GeV]; 
 
 # Fill the TH1 with the cell energy sum
 for event in reader.get("events"):
-    calo_cells = event.get("simplecalo1RO")
+    calo_cells = event.get("simplecaloRO")
     total_energy = sum([calo_cell.getEnergy() for calo_cell in calo_cells])
     cell_energy_sum_th1.Fill(total_energy)
 

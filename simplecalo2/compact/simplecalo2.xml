@@ -95,7 +95,7 @@
     </detector>
   </detectors>
   <readouts>
-    <readout name="simplecalo2RO">
+    <readout name="simplecaloRO">
       <!-- NO SPACES BETWEEN ID DESCRIPTORS!!! -->
       <id>calolayer:5,abslayer:1,cellid:10</id>
     </readout>

@@ -90,7 +90,7 @@
     </detector>
   </detectors>
   <readouts>
-    <readout name="simplecalo1RO">
+    <readout name="simplecaloRO">
       <segmentation type="CartesianGridXY" 
        grid_size_x="10*cm" 
        grid_size_y="10*cm"/>
