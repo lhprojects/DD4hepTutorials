@@ -14,8 +14,9 @@
 
 #include "G4ThreeVector.hh"
 #include "G4TouchableHandle.hh"
+#include <cmath>
 
-#define DEBUG
+// #define DEBUG
 
 namespace dd4hep {
 namespace sim {
@@ -45,7 +46,7 @@ template <> void Geant4SensitiveAction<simplecaloSDData>::initialize() {
 // Define collections created by this sensitivie action object
 template <> void Geant4SensitiveAction<simplecaloSDData>::defineCollections() {
   std::string ROname = m_sensitive.readout().name();
-  m_collectionID = defineCollection<Geant4Calorimeter::Hit>(ROname + "Hits");
+  m_collectionID = defineCollection<Geant4Calorimeter::Hit>(ROname);
 }
 
 // Function template specialization of Geant4SensitiveAction class.
@@ -81,17 +82,13 @@ bool Geant4SensitiveAction<simplecaloSDData>::process(
 
   dd4hep::BitFieldCoder decoder("calolayer:5,abslayer:1,cellid:10");
   auto VolID = volumeID(aStep);
+#ifdef DEBUG
   auto CaloLayerID = decoder.get(VolID, "calolayer");
   auto AbsLayerID = decoder.get(VolID, "abslayer");
   auto CellID = decoder.get(VolID, "cellid");
-#ifdef DEBUG
   std::cout << "--> CaloLayerID: " << CaloLayerID << " AbsLayerID "
             << AbsLayerID << " CellID " << CellID << std::endl;
 #endif
-
-  Geant4HitCollection *coll = collection(m_collectionID);
-  Geant4Calorimeter::Hit *hit =
-      coll->findByKey<Geant4Calorimeter::Hit>(VolID); // the hit
 
   G4TouchableHandle theTouchable =
       aStep->GetPreStepPoint()->GetTouchableHandle();
@@ -103,6 +100,35 @@ bool Geant4SensitiveAction<simplecaloSDData>::process(
   std::cout << "--> Cell global pos(mm) " << CellPos.x() << " " << CellPos.y()
             << " " << CellPos.z() << std::endl;
 #endif
+
+  // Hands-on 5: apply a very short time cut (10 ns) to record the signals
+  // and consider the cell border (2 cm) along x and y completely inefficient,
+  // i.e. not signal is recorder from that area.
+  // Hint: the x,y,z position of the step in the local volume reference frame is
+  // G4ThreeVector globalPosition = aStep->GetPreStepPoint()->GetPosition();
+  // theTouchable->GetHistory()->GetTopTransform().TransformPoint(globalPosition);
+  //
+
+  // Hands-on 5: solution
+  //
+  /*  
+  if (aStep->GetPreStepPoint()->GetGlobalTime() > 10) {
+    return true;
+  }
+  G4ThreeVector globalPosition = aStep->GetPreStepPoint()->GetPosition();
+  G4ThreeVector localPosition =
+      theTouchable->GetHistory()->GetTopTransform().TransformPoint(
+          globalPosition);
+  if (std::abs(localPosition.x()) > 30. || std::abs(localPosition.y()) > 30.) {
+    return true;
+  }
+  */
+
+  // Create the hits and accumulate contributions from multiple steps
+  //
+  Geant4HitCollection *coll = collection(m_collectionID);
+  Geant4Calorimeter::Hit *hit =
+      coll->findByKey<Geant4Calorimeter::Hit>(VolID); // the hit
 
   if (!hit) { // if the hit does not exist yet, create it
     hit = new Geant4Calorimeter::Hit();
