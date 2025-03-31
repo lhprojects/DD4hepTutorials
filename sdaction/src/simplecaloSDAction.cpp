@@ -15,7 +15,7 @@
 #include "G4ThreeVector.hh"
 #include "G4TouchableHandle.hh"
 
-#define DEBUG
+//#define DEBUG
 
 namespace dd4hep {
 namespace sim {
@@ -45,7 +45,7 @@ template <> void Geant4SensitiveAction<simplecaloSDData>::initialize() {
 // Define collections created by this sensitivie action object
 template <> void Geant4SensitiveAction<simplecaloSDData>::defineCollections() {
   std::string ROname = m_sensitive.readout().name();
-  m_collectionID = defineCollection<Geant4Calorimeter::Hit>(ROname + "Hits");
+  m_collectionID = defineCollection<Geant4Calorimeter::Hit>(ROname);
 }
 
 // Function template specialization of Geant4SensitiveAction class.
