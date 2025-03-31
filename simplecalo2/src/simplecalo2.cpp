@@ -113,8 +113,12 @@ static Ref_t create_detector(Detector &description, xml_h e,
       SensLayerVol, 1, Position(0., 0., CaloLayerZ / 2. - SensLayerZ / 2.));
   SensLayerPlaced.addPhysVolID("abslayer", 0);
 
-  // Place many active cells (pixels) inside the calorimeter layer
+  // Hands-on 4: Place 100 active cells (pixels) inside the calorimeter sensitive layer
   //
+
+  // Hands-on 4: Solution
+  //
+  ///*
   Box Cell(CellX / 2., CellY / 2., CellZ / 2.);
   Volume CellVol("CellVol", Cell,
                  description.material(x_cell.attr<std::string>(_U(material))));
@@ -132,6 +136,7 @@ static Ref_t create_detector(Detector &description, xml_h e,
       CellVolPlaced.addPhysVolID("cellid", 10 * i + j);
     }
   }
+  //*/
 
   // Finalize geometry
   //
