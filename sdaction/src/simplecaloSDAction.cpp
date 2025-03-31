@@ -111,7 +111,7 @@ bool Geant4SensitiveAction<simplecaloSDData>::process(
 
   // Hands-on 5: solution
   //
-  /*
+  
   if (aStep->GetPreStepPoint()->GetGlobalTime() > 10) {
     return true;
   }
@@ -122,7 +122,7 @@ bool Geant4SensitiveAction<simplecaloSDData>::process(
   if (std::abs(localPosition.x()) > 30. || std::abs(localPosition.y()) > 30.) {
     return true;
   }
-  */
+ 
 
   // Create the hits and accumulate contributions from multiple steps
   //
