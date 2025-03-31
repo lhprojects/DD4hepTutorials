@@ -14,8 +14,9 @@
 
 #include "G4ThreeVector.hh"
 #include "G4TouchableHandle.hh"
+#include <cmath>
 
-#define DEBUG
+// #define DEBUG
 
 namespace dd4hep {
 namespace sim {
@@ -81,10 +82,10 @@ bool Geant4SensitiveAction<simplecaloSDData>::process(
 
   dd4hep::BitFieldCoder decoder("calolayer:5,abslayer:1,cellid:10");
   auto VolID = volumeID(aStep);
+#ifdef DEBUG
   auto CaloLayerID = decoder.get(VolID, "calolayer");
   auto AbsLayerID = decoder.get(VolID, "abslayer");
   auto CellID = decoder.get(VolID, "cellid");
-#ifdef DEBUG
   std::cout << "--> CaloLayerID: " << CaloLayerID << " AbsLayerID "
             << AbsLayerID << " CellID " << CellID << std::endl;
 #endif
@@ -99,6 +100,29 @@ bool Geant4SensitiveAction<simplecaloSDData>::process(
   std::cout << "--> Cell global pos(mm) " << CellPos.x() << " " << CellPos.y()
             << " " << CellPos.z() << std::endl;
 #endif
+
+  // Hands-on 5: apply a very short time cut (10 ns) to record the signals
+  // and consider the cell border (2 cm) along x and y completely inefficient,
+  // i.e. not signal is recorder from that area.
+  // Hint: the x,y,z position of the step in the local volume reference frame is
+  // G4ThreeVector globalPosition = aStep->GetPreStepPoint()->GetPosition();
+  // theTouchable->GetHistory()->GetTopTransform().TransformPoint(globalPosition);
+  //
+
+  // Hands-on 5: solution
+  //
+  /*
+  if (aStep->GetPreStepPoint()->GetGlobalTime() > 10) {
+    return true;
+  }
+  G4ThreeVector globalPosition = aStep->GetPreStepPoint()->GetPosition();
+  G4ThreeVector localPosition =
+      theTouchable->GetHistory()->GetTopTransform().TransformPoint(
+          globalPosition);
+  if (std::abs(localPosition.x()) > 30. || std::abs(localPosition.y()) > 30.) {
+    return true;
+  }
+  */
 
   // Create the hits and accumulate contributions from multiple steps
   //
