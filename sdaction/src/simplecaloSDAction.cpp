@@ -15,7 +15,7 @@
 #include "G4ThreeVector.hh"
 #include "G4TouchableHandle.hh"
 
-//#define DEBUG
+#define DEBUG
 
 namespace dd4hep {
 namespace sim {
@@ -89,10 +89,6 @@ bool Geant4SensitiveAction<simplecaloSDData>::process(
             << AbsLayerID << " CellID " << CellID << std::endl;
 #endif
 
-  Geant4HitCollection *coll = collection(m_collectionID);
-  Geant4Calorimeter::Hit *hit =
-      coll->findByKey<Geant4Calorimeter::Hit>(VolID); // the hit
-
   G4TouchableHandle theTouchable =
       aStep->GetPreStepPoint()->GetTouchableHandle();
   G4ThreeVector origin(0., 0., 0.);
@@ -103,6 +99,12 @@ bool Geant4SensitiveAction<simplecaloSDData>::process(
   std::cout << "--> Cell global pos(mm) " << CellPos.x() << " " << CellPos.y()
             << " " << CellPos.z() << std::endl;
 #endif
+
+  // Create the hits and accumulate contributions from multiple steps
+  //
+  Geant4HitCollection *coll = collection(m_collectionID);
+  Geant4Calorimeter::Hit *hit =
+      coll->findByKey<Geant4Calorimeter::Hit>(VolID); // the hit
 
   if (!hit) { // if the hit does not exist yet, create it
     hit = new Geant4Calorimeter::Hit();
