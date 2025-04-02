@@ -19,7 +19,7 @@ git clone git@github.com:DRD6/DD4hepTutorials.git
 cd DD4hepTutorials
 mkdir build install
 cd build
-cmake .. -DCMAKE_INSTALL_PREFIX=../install -Wno-dev -Wunused-variable
+cmake .. -DCMAKE_INSTALL_PREFIX=../install -Wno-dev
 make install -j 8
 cd ..
 # The following command configures the environment to ensure the system can locate the DD4hep detector builders:
