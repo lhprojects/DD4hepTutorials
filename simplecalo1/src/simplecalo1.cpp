@@ -83,7 +83,9 @@ static Ref_t create_detector(Detector &description, xml_h e,
       description.material(x_calolayer.attr<std::string>(_U(material))));
   CaloLayerVol.setVisAttributes(description, x_calolayer.visStr());
   */
+
   // once completed the Hands-on 1 uncomment also the block below
+  // and check that your Volume object has the same name "CaloLayerVol"
   /*
   // Place N calorimeter layers inside the CaloVol.
   // Hint: use NumberOfLayers defined above.
@@ -120,15 +122,19 @@ static Ref_t create_detector(Detector &description, xml_h e,
   Volume SensLayerVol(
       "SensLayerVol", SensLayer,
       description.material(x_senslayer.attr<std::string>(_U(material))));
-  // Make the layer sensitive
-  if (islayersens) {
-    SensLayerVol.setSensitiveDetector(sens);
-    SensLayerVol.setLimitSet(description, x_det.limitsStr());
-  }
   SensLayerVol.setVisAttributes(description, x_senslayer.visStr());
   PlacedVolume SensLayerPlaced = CaloLayerVol.placeVolume(
       SensLayerVol, 1, Position(0., 0., CaloLayerZ / 2. - SensLayerZ / 2.));
   SensLayerPlaced.addPhysVolID("abslayer", 0);
+  */
+
+  // After Hands-on 2 is done uncomment this code below
+  // to make the layer sensitive. Check that your SensitiveLayer Volume
+  // has the correct name "SensLayerVol"
+  /*
+  if (islayersens) {
+    SensLayerVol.setSensitiveDetector(sens);
+  }
   */
 
   // Finalize geometry
