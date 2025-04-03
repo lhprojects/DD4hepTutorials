@@ -13,6 +13,7 @@ set(SOURCES
   ${PROJECT_SOURCE_DIR}/simplecalo1/src/simplecalo1.cpp
   ${PROJECT_SOURCE_DIR}/simplecalo2/src/simplecalo2.cpp
 )
+add_compile_options(-Wno-unused-variable)
 
 # Create a single plugin
 dd4hep_add_plugin(${PROJECT_NAME} SOURCES ${SOURCES} USES
