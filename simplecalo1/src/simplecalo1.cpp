@@ -72,19 +72,10 @@ static Ref_t create_detector(Detector &description, xml_h e,
   //
 
   // Hands-on 1 solution
-  //
-  // Create the calorimeter layer that will contain both the absorber
-  // and active elements
-  //
-  /*
-  Box CaloLayer(CaloLayerX / 2., CaloLayerY / 2., CaloLayerZ / 2.);
-  Volume CaloLayerVol(
-      "CaloLayerVol", CaloLayer,
-      description.material(x_calolayer.attr<std::string>(_U(material))));
-  CaloLayerVol.setVisAttributes(description, x_calolayer.visStr());
-  */
+  // Uncomment the line below to include the solution
+  //#include "sc1_solution1.h"
 
-  // once completed the Hands-on 1 uncomment also the block below
+  // Once completed the Hands-on 1 uncomment also the block below
   // and check that your Volume object has the same name "CaloLayerVol"
   /*
   // Place N calorimeter layers inside the CaloVol.
@@ -102,31 +93,10 @@ static Ref_t create_detector(Detector &description, xml_h e,
   // sensitive layer inside CaloLayerVol
   //
 
-  /*
-  // Hands-on 2 solution
-  //
-  // Place an absorber layer inside the calorimeter layer
-  //
-  Box AbsLayer(AbsLayerX / 2., AbsLayerY / 2., AbsLayerZ / 2.);
-  Volume AbsLayerVol(
-      "AbsLayerVol", AbsLayer,
-      description.material(x_abslayer.attr<std::string>(_U(material))));
-  AbsLayerVol.setVisAttributes(description, x_abslayer.visStr());
-  PlacedVolume AbsLayerPlaced = CaloLayerVol.placeVolume(
-      AbsLayerVol, 1, Position(0., 0., -CaloLayerZ / 2. + AbsLayerZ / 2.));
-  AbsLayerPlaced.addPhysVolID("abslayer", 1);
 
-  // Place an active layer inside the calorimeter layer
-  //
-  Box SensLayer(SensLayerX / 2., SensLayerY / 2., SensLayerZ / 2.);
-  Volume SensLayerVol(
-      "SensLayerVol", SensLayer,
-      description.material(x_senslayer.attr<std::string>(_U(material))));
-  SensLayerVol.setVisAttributes(description, x_senslayer.visStr());
-  PlacedVolume SensLayerPlaced = CaloLayerVol.placeVolume(
-      SensLayerVol, 1, Position(0., 0., CaloLayerZ / 2. - SensLayerZ / 2.));
-  SensLayerPlaced.addPhysVolID("abslayer", 0);
-  */
+  // Hands-on 2 solution
+  // Uncomment the line below to include the solution
+  //#include "sc1_solution2.h"
 
   // After Hands-on 2 is done uncomment this code below
   // to make the layer sensitive. Check that your SensitiveLayer Volume
