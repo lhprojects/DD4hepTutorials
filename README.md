@@ -26,6 +26,6 @@ cd ..
 k4_local_repo
 ```
 
-For detailed instructions on running the tutorials, refer to the README file in each exercise's folder.
+For instructions on **simplecalo1** and **simplecalo2** follow [this presentation](https://indico.ijclab.in2p3.fr/event/11400/sessions/5873/attachments/25413/37372/DRD6DD4hepTutorial_April2025.pdf).
 
 Happy coding! :rocket:
