@@ -73,11 +73,11 @@ static Ref_t create_detector(Detector &description, xml_h e,
 
   // Hands-on 1 solution
   // Uncomment the line below to include the solution
-  //#include "sc1_solution1.h"
+  #include "sc1_solution1.h"
 
   // Once completed the Hands-on 1 uncomment also the block below
   // and check that your Volume object has the same name "CaloLayerVol"
-  /*
+  ///*
   // Place N calorimeter layers inside the CaloVol.
   // Hint: use NumberOfLayers defined above.
   //
@@ -87,7 +87,7 @@ static Ref_t create_detector(Detector &description, xml_h e,
         Position(0., 0., -CaloZ / 2. + CaloLayerZ / 2. + i * CaloLayerZ));
     CaloLayerPlaced.addPhysVolID("calolayer", i + 1);
   }
-  */
+  //*/
 
   // Hands-on 2: create and place and absorber layer and a
   // sensitive layer inside CaloLayerVol
@@ -96,16 +96,16 @@ static Ref_t create_detector(Detector &description, xml_h e,
 
   // Hands-on 2 solution
   // Uncomment the line below to include the solution
-  //#include "sc1_solution2.h"
+  #include "sc1_solution2.h"
 
   // After Hands-on 2 is done uncomment this code below
   // to make the layer sensitive. Check that your SensitiveLayer Volume
   // has the correct name "SensLayerVol"
-  /*
+  ///*
   if (islayersens) {
     SensLayerVol.setSensitiveDetector(sens);
   }
-  */
+  //*/
 
   // Finalize geometry
   //
